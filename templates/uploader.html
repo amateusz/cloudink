@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/dropzone.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+    <style>
+        .file-upload input[type='file'] {
+            display: none;
+        }
+
+        body {
+            background: #d5523c;
+            background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
+            background: linear-gradient(to right, #0083B0, #00B4DB);
+            height: 100vh;
+        }
+
+        .rounded-lg {
+            border-radius: 1rem;
+        }
+
+        .custom-file-label.rounded-pill {
+            border-radius: 50rem;
+        }
+
+        .custom-file-label.rounded-pill::after {
+            border-radius: 0 50rem 50rem 0;
+        }
+    </style>
+
+</head>
+<body>
+<section>
+    <div class="container p-5">
+        <!-- For demo purpose -->
+        <div class="row mb-5 text-center text-white">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="display-3">Dziwny ekranik #2</h1>
+                <h2 class="display-7">(czarno–biało–czerwony)</h2>
+
+            </div>
+        </div>
+        <!-- End -->
+
+
+        <div class="row">
+            <div class="col-lg-7 mx-auto">
+                <div class="p-5 p-m-3 bg-white shadow rounded-lg">
+                    <h3 class="display-5 ">Wgraj obrazek tła do wyświetlacza pogodowego u nas w domu</h3>
+
+
+                    <div class="d-block mx-auto mb-4 mt-5 rounded-pill">
+                        <h6 class="text-center mb-4 mt-10  text-muted">
+                            Przeciągnij pliki tutaj, albo naciśnij na →<b>brzuszek</b>←
+                        </h6>
+                    </div>
+
+                    <div class="px-5 mb-1">
+                        <!--                        <script src="./static/dropzone.js"></script>-->
+                        <!--                        <script type="text/javascript">-->
+                        <!--                            Dropzone.autoDiscover = true;-->
+
+                        <!--                            // $(document).ready(function () {-->
+                        <!--                            window.addEventListener('load', function () {-->
+                        <!--                                Dropzone.instances[0].options.maxFiles = 1;-->
+                        <!--                                Dropzone.instances[0].options.dictDefaultMessage = "brzuszek";-->
+                        <!--                                Dropzone.instances[0].options.uploadMultiple = false;-->
+                        <!--                            })-->
+                        <!--                        </script>-->
+
+                        <!--                        <form action="/upload"-->
+                        <!--                              name="uploadForm"-->
+                        <!--                              id="uploadBox"-->
+                        <!--                              class="dropzone rounded-pill">-->
+                        <!--                        </form>-->
+
+                        <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="input-group btn-group" name="image">
+                                    <div class="custom-file btn-group mb-3">
+                                        <input class="custom-file-input" type="file" id="customFile" name="file">
+                                        <label class="custom-file-label" for="customFile">brzuszek</label>
+                                    </div>
+                                </div>
+                                <script>
+                                    $(document).ready(function () {
+                                        document.getElementById("uploadBtn").disabled = true;
+                                        document.getElementById("uploadBtn").classList.add("cursor-not-allowed");
+
+                                    })
+                                </script>
+                                <button type="submit" id="uploadBtn" class="btn btn-primary btn-block pull-right"
+                                        disabled>
+                                    Wgraj
+                                </button>
+
+                            </div>
+                        </form>
+
+                        <script>
+                            // Add the following code if you want the name of the file appear on select
+                            $(".custom-file-input").on("change", function () {
+                                var fileName = $(this).val().split("\\").pop();
+                                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                                document.getElementById("uploadBtn").disabled = false;
+                                document.getElementById("uploadBtn").classList.remove("cursor-not-allowed");
+                                document.getElementById("uploadBtn").classList.add("cursor-default");
+
+                            });
+                        </script>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

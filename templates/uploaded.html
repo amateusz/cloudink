@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/dropzone.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+    <style>
+        .file-upload input[type='file'] {
+            display: none;
+        }
+
+        body {
+            background: #d5523c;
+            background: -webkit-linear-gradient(to right, #b0000f, #322d2f);
+            background: linear-gradient(to right, #b00001, #3d3a3c);
+            height: 100vh;
+        }
+
+        .rounded-lg {
+            border-radius: 1rem;
+        }
+
+        .custom-file-label.rounded-pill {
+            border-radius: 50rem;
+        }
+
+        .custom-file-label.rounded-pill::after {
+            border-radius: 0 50rem 50rem 0;
+        }
+    </style>
+
+</head>
+<body>
+<section>
+    <div class="container p-5">
+        <!-- For demo purpose -->
+        <div class="row mb-5 text-center text-white">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="display-3">Dziwny ekranik #2</h1>
+                <h2 class="display-7">(czarno–biało–czerwony)</h2>
+
+            </div>
+        </div>
+        <!-- End -->
+
+        <div class="row">
+            <div class="col-lg-7 mx-auto">
+                <div class="p-5 p-m-3 bg-white shadow rounded-lg">
+                    <h3 class="display-6 ">Oto wgrany obrazek:</h3>
+                    <div class="d-block mb-4 mt-5 rounded-pill">
+                        <img src="{{rel_img_path}}" abs="just uploaded" class="d-block" width="100%">
+                    </div>
+                    <form action="/set_image" method="post">
+                        <button class="btn btn-dark btn-lg btn-block btn-primary" type="submit" name="submit_button"
+                                value="clicked">Ustaw to zdjęcie na ekraniku
+                        </button>
+                        <input type="hidden" name="img_rel_path" value="{{ rel_return_img_path }}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
